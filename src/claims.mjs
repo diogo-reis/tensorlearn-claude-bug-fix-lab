@@ -10,5 +10,5 @@ export function getClaim(claims, viewerId, claimId) {
   const target = normalizeId(claimId);
   const viewer = normalizeId(viewerId);
   if (target === null || viewer === null) return null;
-  return claims.find(claim => normalizeId(claim.id) === target && normalizeId(claim.ownerId) === viewer) ?? null;
+  return claims.find(claim => claim !== null && typeof claim === 'object' && normalizeId(claim.id) === target && normalizeId(claim.ownerId) === viewer) ?? null;
 }
